@@ -1,0 +1,147 @@
+# ==============================================================================
+# Cloudflare Java 17 Spring Boot Project - .gitignore
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Node.js & Package Managers
+# ------------------------------------------------------------------------------
+node_modules/
+.npm/
+
+# npm, yarn, and pnpm debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Explicitly ensure package files are tracked for GitHub Actions npm ci
+!package.json
+!package-lock.json
+
+# ------------------------------------------------------------------------------
+# 2. Java & Maven
+# ------------------------------------------------------------------------------
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# Maven wrapper runtime downloads (preserve configuration and scripts)
+.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+
+# Explicitly ensure Maven project configuration is tracked
+!pom.xml
+
+# ------------------------------------------------------------------------------
+# 3. Cloudflare & Wrangler Local Environment
+# ------------------------------------------------------------------------------
+.wrangler/
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Allow documented, non-secret example template
+!.env.example
+
+# Explicitly ensure Cloudflare configuration and source files are tracked
+!wrangler.jsonc
+!src/index.ts
+
+# ------------------------------------------------------------------------------
+# 4. Secrets, Keys & Credentials
+# ------------------------------------------------------------------------------
+*.pem
+*.key
+*.pkcs12
+*.p12
+*.pfx
+*.jks
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*.keystore
+secrets.json
+credentials.json
+cloudflare_api_token*
+
+# ------------------------------------------------------------------------------
+# 5. IDEs, Editors & Operating System
+# ------------------------------------------------------------------------------
+# JetBrains (IntelliJ IDEA)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbproject/genfiles.properties
+/nbproject/project.xml
+
+# Visual Studio Code & Antigravity IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+*.tmp
+*.temp
+*~
+
+# ------------------------------------------------------------------------------
+# 6. Docker & Containerization
+# ------------------------------------------------------------------------------
+# Local Docker override files that may contain secrets or local volume mounts
+docker-compose.override.yml
+docker-compose.*.override.yml
+*.override.yml
+
+# Explicitly ensure Dockerfile and .dockerignore are tracked
+!Dockerfile
+!.dockerignore
+
+# ------------------------------------------------------------------------------
+# 7. CI/CD & GitHub Actions
+# ------------------------------------------------------------------------------
+# Explicitly ensure deployment workflows are tracked
+!.github/
+!.github/workflows/
+!.github/workflows/deploy.yml

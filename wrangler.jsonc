@@ -1,0 +1,35 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "cloudflare-java17-test",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-10-18",
+
+	// Cloudflare Containers configuration
+	"containers": [
+		{
+			"name": "spring-boot-container",
+			"image": "./Dockerfile",
+			"class_name": "SpringBootContainer",
+			"max_instances": 1
+		}
+	],
+
+	// Durable Object binding for communicating with the container
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "SPRING_BOOT_CONTAINER",
+				"class_name": "SpringBootContainer"
+			}
+		]
+	},
+
+	// Declarative exports approach with SQLite storage (mutually exclusive with migrations)
+	"exports": {
+		"SpringBootContainer": {
+			"type": "durable-object",
+			"storage": "sqlite",
+			"container": "spring-boot-container"
+		}
+	}
+}
